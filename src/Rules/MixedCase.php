@@ -11,8 +11,8 @@ class MixedCase implements EmailRule
 
     public function regex(string $email): string
     {
-        [$username, $domain] = explode('@', $email, 2);
+        [$localPart, $domain] = explode('@', $email, 2);
 
-        return '(?i)' . $username . '(?-i)' . '@' . $domain;
+        return '(?i)' . $localPart . '(?-i)' . '@' . $domain;
     }
 }

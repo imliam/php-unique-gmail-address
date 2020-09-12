@@ -6,7 +6,7 @@ class Util
 {
     public static function isGmailAddress(string $email): bool
     {
-        [$username, $domain] = explode('@', $email, 2);
+        [$localPart, $domain] = explode('@', $email, 2);
 
         return in_array($domain, ['gmail.com', 'googlemail.com']);
     }
@@ -17,7 +17,7 @@ class Util
             return false;
         }
 
-        [$username, $domain] = explode('@', $email, 2);
+        [$localPart, $domain] = explode('@', $email, 2);
 
         /** @var string[] $mxRecords */
         $successful = getmxrr($domain, $mxRecords);

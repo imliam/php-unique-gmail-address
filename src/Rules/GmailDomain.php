@@ -12,15 +12,15 @@ class GmailDomain implements EmailRule
             return $email;
         }
 
-        [$username, $domain] = explode('@', $email, 2);
+        [$localPart, $domain] = explode('@', $email, 2);
 
-        return $username . '@gmail.com';
+        return $localPart . '@gmail.com';
     }
 
     public function regex(string $email): string
     {
-        [$username, $domain] = explode('@', $email, 2);
+        [$localPart, $domain] = explode('@', $email, 2);
 
-        return $username . '@(gmail|googlemail).com';
+        return $localPart . '@(gmail|googlemail).com';
     }
 }

@@ -1,4 +1,4 @@
-# Ensure that a Gmail address is unique
+# Unique Gmail Address
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/imliam/php-unique-gmail-address.svg?style=flat-square)](https://packagist.org/packages/imliam/php-unique-gmail-address)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/imliam/php-unique-gmail-address/run-tests?label=tests)](https://github.com/imliam/php-unique-gmail-address/actions?query=workflow%3Arun-tests+branch%3Amaster)

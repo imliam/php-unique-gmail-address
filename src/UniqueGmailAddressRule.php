@@ -2,9 +2,8 @@
 
 namespace ImLiam\UniqueGmailAddress;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Rule;
-use ImLiam\UniqueGmailAddress\UniqueGmailAddress;
+use Illuminate\Support\Facades\DB;
 
 class UniqueGmailAddressRule implements Rule
 {
@@ -21,7 +20,7 @@ class UniqueGmailAddressRule implements Rule
     {
         $validator = new UniqueGmailAddress($value);
 
-        if (!$validator->isGmailAddress()) {
+        if (! $validator->isGmailAddress()) {
             return true;
         }
 

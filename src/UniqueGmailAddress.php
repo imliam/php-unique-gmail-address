@@ -21,7 +21,7 @@ class UniqueGmailAddress
 
     public function normalizeAddress()
     {
-        if (!$this->isGmailAddress()) {
+        if (! $this->isGmailAddress()) {
             return $this->originalEmail;
         }
 

@@ -18,7 +18,7 @@ class UniqueGmailAddressRule implements Rule
 
     public function passes($attribute, $value)
     {
-        if (!Util::isGmailAddress($value) && !Util::isGsuiteAddress($value)) {
+        if (! Util::isGmailAddress($value) && ! Util::isGsuiteAddress($value)) {
             return true;
         }
 

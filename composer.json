@@ -1,0 +1,48 @@
+{
+    "name": "imliam/php-unique-gmail-address",
+    "description": "Ensure that a Gmail address is unique",
+    "keywords": [
+        "imliam",
+        "php-unique-gmail-address"
+    ],
+    "homepage": "https://github.com/imliam/php-unique-gmail-address",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Liam Hammett",
+            "email": "liam@liamhammett.com",
+            "homepage": "https://liamhammett.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "ImLiam\\UniqueGmailAddress\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ImLiam\\UniqueGmailAddress\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

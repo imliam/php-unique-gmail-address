@@ -7,9 +7,7 @@ class DotsInUsername implements EmailRule
     public function normalize(string $email): string
     {
         [$username, $domain] = explode('@', $email, 2);
-        $username = str_replace('.', '', $username);
-
-        return $username . '@' . $domain;
+        return str_replace('.', '', $username) . '@' . $domain;
     }
 
     public function regex(string $email): string

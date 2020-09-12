@@ -72,7 +72,7 @@ class UniqueGmailAddress
 
     public function matches($emailToCompare)
     {
-        /** @var $matches array */
+        /** @var array $matches */
         preg_match($this->getRegexWithDelimiters(), $emailToCompare, $matches);
 
         return ! empty($matches);

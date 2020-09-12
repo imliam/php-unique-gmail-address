@@ -34,13 +34,11 @@ class UniqueGmailAddress
 
     private function stringEndsWith(string $haystack, string $needle): bool
     {
-        $length = strlen($needle);
-
-        if ($length === 0) {
+        if ($needle === '') {
             return true;
         }
 
-        return substr($haystack, -$length) === $needle;
+        return substr($haystack, -strlen($needle)) === $needle;
     }
 
     private function getEscapedEmailUsername()
@@ -75,6 +73,6 @@ class UniqueGmailAddress
         /** @var array $matches */
         preg_match($this->getRegexWithDelimiters(), $emailToCompare, $matches);
 
-        return ! empty($matches);
+        return $matches !== [];
     }
 }

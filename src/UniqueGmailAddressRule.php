@@ -18,11 +18,11 @@ class UniqueGmailAddressRule implements Rule
 
     public function passes($attribute, $value)
     {
-        $validator = new UniqueGmailAddress($value);
-
-        if (! $validator->isGmailAddress()) {
+        if (!Util::isGmailAddress($value) && !Util::isGsuiteAddress($value)) {
             return true;
         }
+
+        $validator = new UniqueGmailAddress($value);
 
         return ! DB::table($this->table)->where($this->column, 'REGEXP', $validator->getRegexWithDelimiters())->exists();
     }

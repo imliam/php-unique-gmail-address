@@ -29,6 +29,7 @@ class UniqueGmailAddressTest extends TestCase
     {
         $validator = new UniqueGmailAddress('te.st+123@googlemail.com');
 
+        dd($validator->getRegex());
         $this->assertTrue($validator->matches('test@gmail.com'));
         $this->assertTrue($validator->matches('tes.t@gmail.com'));
         $this->assertTrue($validator->matches('test@googlemail.com'));
@@ -39,6 +40,6 @@ class UniqueGmailAddressTest extends TestCase
     {
         $validator = new UniqueGmailAddress('te.st+123@googlemail.com');
 
-        $this->assertEquals('test@gmail.com', $validator->normalizeAddress());
+        $this->assertEquals('test@gmail.com', $validator->normalize());
     }
 }

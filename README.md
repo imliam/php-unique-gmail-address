@@ -34,7 +34,7 @@ The `isGmailAddress` method will check if the given address belongs to a Gmail a
 $one = new UniqueGmailAddress('example@gmail.com');
 $one->isGmailAddress(); // true
 
-$two = new UniqueGmailAddress('example@google.com');
+$two = new UniqueGmailAddress('example@googlemail.com');
 $two->isGmailAddress(); // true
 
 $three = new UniqueGmailAddress('example@example.com');

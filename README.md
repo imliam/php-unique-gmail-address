@@ -1,8 +1,8 @@
 # Unique Gmail Address
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/imliam/php-unique-gmail-address.svg?style=flat-square)](https://packagist.org/packages/imliam/php-unique-gmail-address)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/imliam/php-unique-gmail-address.svg)](https://packagist.org/packages/imliam/php-unique-gmail-address)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/imliam/php-unique-gmail-address/Tests?label=tests)](https://github.com/imliam/php-unique-gmail-address/actions?query=workflow%3ATests)
-[![Total Downloads](https://img.shields.io/packagist/dt/imliam/php-unique-gmail-address.svg?style=flat-square)](https://packagist.org/packages/imliam/php-unique-gmail-address)
+[![Total Downloads](https://img.shields.io/packagist/dt/imliam/php-unique-gmail-address.svg)](https://packagist.org/packages/imliam/php-unique-gmail-address)
 
 A package to ensure that a Gmail address is unique.
 
@@ -48,6 +48,8 @@ $email = new UniqueGmailAddress('ex.am.ple+helloworld@googlemail.com');
 $email->normalizeAddress(); // example@gmail.com
 ```
 
+> ⚠️ It's best to save and use the email address exactly as the user gave instead of only saving a normalized version. If a user enters a denormalized email address, they probably expect any emails they receive to be at that exact address and not the normalized version.
+
 The `getRegex` and `getRegexWithDelimeters` methods will return a regular expression that can be used to compare the original email address to another one, using a function like `preg_match`:
 
 ```php
@@ -66,7 +68,7 @@ $email->matches('ex.am.ple+helloworld@googlemail.com'); // true
 
 One of the most common use cases for wanting to check duplicate Gmail accounts is to prevent multiple users signing up to your service with the same email address.
 
-To handle this case, the package also provides a [Laravel validation rule class](https://laravel.com/docs/master/validation) that can be used to check the database if a matching email address is already present:
+To handle this case, the package also provides a [Laravel validation rule class](https://laravel.com/docs/master/validation) that can be used to check the database if a matching email address is already present.
 
 ```php
 $request->validate([
@@ -81,6 +83,12 @@ $request->validate([
     'email' => [new UniqueGmailAddressRule('contacts', 'email_address')],
 ]);
 ```
+
+**This rule assumes that you are storing denormalized email addresses in the database.** This rule will use a regex match against every row in the database to check if 
+
+> 💡 If you don't want to use a regex match against every row of the database, you could instead store the normalized email address in a second column alongside the original email address, for example in a `normalized_email` column.
+> 
+> This would allow you use the regular [exists](https://laravel.com/docs/master/validation#rule-exists) rule to do a direct match against, much more efficiently.
 
 ## Changelog
 

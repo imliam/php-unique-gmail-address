@@ -23,9 +23,7 @@ class UniqueGmailAddressRule implements ValidationRule
             return;
         }
 
-        $alreadyExists = !DB::table($this->table)->where($this->column, 'REGEXP', $validator->getRegexWithDelimiters())->exists();
-
-        if ($alreadyExists) {
+        if (DB::table($this->table)->where($this->column, 'REGEXP', $validator->getRegexWithDelimiters())->exists()) {
             $fail('A variation of the given email address has already been used.');
         }
     }

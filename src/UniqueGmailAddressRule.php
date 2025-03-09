@@ -2,33 +2,29 @@
 
 namespace ImLiam\UniqueGmailAddress;
 
-use Illuminate\Contracts\Validation\Rule;
+use Closure;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Validation\ValidationRule;
+use Override;
 
-class UniqueGmailAddressRule implements Rule
+class UniqueGmailAddressRule implements ValidationRule
 {
-    protected $table;
-    protected $column;
+    public function __construct(
+        protected string $table = 'users',
+        protected string $column = 'email',
+    ) {}
 
-    public function __construct($table = 'users', $column = 'email')
-    {
-        $this->table = $table;
-        $this->column = $column;
-    }
-
-    public function passes($attribute, $value)
+    #[Override]
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $validator = new UniqueGmailAddress($value);
 
         if (! $validator->isGmailAddress()) {
-            return true;
+            return;
         }
 
-        return ! DB::table($this->table)->where($this->column, 'REGEXP', $validator->getRegexWithDelimiters())->exists();
-    }
-
-    public function message()
-    {
-        return 'A variation of the given email address has already been used.';
+        if (DB::table($this->table)->where($this->column, 'REGEXP', $validator->getRegexWithDelimiters())->exists()) {
+            $fail('A variation of the given email address has already been used.');
+        }
     }
 }

@@ -1,7 +1,6 @@
 # Unique Gmail Address
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/imliam/php-unique-gmail-address.svg)](https://packagist.org/packages/imliam/php-unique-gmail-address)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/imliam/php-unique-gmail-address/Tests?label=tests)](https://github.com/imliam/php-unique-gmail-address/actions?query=workflow%3ATests)
 [![Total Downloads](https://img.shields.io/packagist/dt/imliam/php-unique-gmail-address.svg)](https://packagist.org/packages/imliam/php-unique-gmail-address)
 
 A package to ensure that a Gmail address is unique.

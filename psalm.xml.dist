@@ -13,4 +13,8 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <PossiblyUnusedMethod errorLevel="info" />
+        <UnusedClass errorLevel="info" />
+    </issueHandlers>
 </psalm>
